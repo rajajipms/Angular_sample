@@ -10,7 +10,7 @@
 		(m = window.onerror),(window.onerror = function (b, c, d, f, g) {
 		m && m(b, c, d, f, g),g || (g = new Error(b)),(w[r].q = w[r].q || []).push(["captureException",g]);})
 	}
-})(window,document,'//static.site24x7rum.com/beacon/site24x7rum-min.js?appKey=','s247r','455e52ed25a05b16405143b40115fd55');
+})(window,document,'//static.site24x7rum.com/beacon/site24x7rum-min.js?appKey=','s247r','16e7e7cb31617d52a55caef8b90725fa');
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 </head>
@@ -19,7 +19,7 @@
 <script>
 var app = angular.module("myShoppingList", []); 
 app.controller("myCtrl", function($scope) {
-    $scope.products = ["Milk", "Bread", "Cheese"];
+    $scope.products = ["Milk1", "Bread", "Cheese"];
     $scope.addItem = function () {
         $scope.errortext = "";
         if (!$scope.addMe) {return;}        
