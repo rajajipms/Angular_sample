@@ -13,6 +13,7 @@
 })(window,document,'//localhost:6443/rum/resources/beacon/site24x7rum-min.js?appKey=','s247r','16e7e7cb31617d52a55caef8b90725fa');
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script type="text/javascript" src="../../backbase/4_4_1/engine/boot.js" ></script>
 </head>
 <body>
 
@@ -47,6 +48,29 @@ app.controller("myCtrl", function($scope) {
 
 <p>Try to add the same item twice, and you will get an error message.</p>
 
+	
+<script type="application/backbase+xml">
+<xi:include href="../../backbase/4_4_1/bindings/config.xml">
+</xi:include>
+<div style="margin: 80px 0 0 20px; width: 300px;">
+<p> Please type your name and click OK: </p>
+<input id="myInput" type="text" />
+<button style="margin-left: 10px;">
+OK
+<e:handler event="click" type="text/javascript">
+var oBalloon = bb.document.getElementById('myBalloon');
+var oInput = bb.document.getElementById('myInput');
+var sValue = bb.getProperty(oInput,'value');
+bb.command.setText(oBalloon, 'Hello: ' + sValue,'replaceChildren');
+oBalloon.setAttribute('open', 'true');
+</e:handler>
+</button>
+<b:balloon label="Backbase says:"
+id="myBalloon" mode="top-center"
+timeout="10s" width="250px" />
+</div>
+</script>
+	
 </body>
 </html>
 
