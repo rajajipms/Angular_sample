@@ -16,6 +16,42 @@
 <script type="text/javascript" src="../../backbase/4_4_1/engine/boot.js" ></script>
 </head>
 <body>
+<script>
+	try{
+// 1. Get the element
+var typingTimer;                // Timer identifier
+var doneTypingInterval = 2000;  // Time in ms (2 seconds)
+var listenerAttached = false;   // Flag to prevent multiple listeners
+// 2. Listen for 'input' (handles typing, pasting, and cutting)
+// Poll for the element every 100ms until it's found
+var elementCheckInterval = setInterval(function() {
+	var inputInput = document.getElementById('txtInput');
+	
+	if (inputInput && !listenerAttached) {
+		listenerAttached = true;
+		clearInterval(elementCheckInterval); // Stop polling once found
+		console.log("Element found, listener attached!");
+
+		// Listen for 'input' (handles typing, pasting, and cutting)
+		inputInput.addEventListener('input', function () {
+			// Clear the previous timer (reset the countdown)
+			clearTimeout(typingTimer);
+
+			// Start a new timer
+			typingTimer = setTimeout(function () {
+				// This code runs 2 seconds after the user stops typing
+				var finalValue = inputInput.value;
+				
+				// Only send if not empty (optional check)
+				if(finalValue) {
+					s247r('userId', finalValue);
+					console.log("Captured: " + finalValue); // For testing
+				}
+			}, doneTypingInterval);
+		});
+	}
+}, 100); // Check every 100ms
+</script>
 
 <script>
 var app = angular.module("myShoppingList", []); 
@@ -47,6 +83,12 @@ app.controller("myCtrl", function($scope) {
 </div>
 
 <p>Try to add the same item twice, and you will get an error message.</p>
+
+<div>
+    Check me.. Code starts here!!
+    <input id="txtInput" type="text"/>
+    <button onclick="testScript()">TestScript</button>
+</div>
 
 	
 <script type="application/backbase+xml">
